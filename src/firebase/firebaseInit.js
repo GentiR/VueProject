@@ -1,14 +1,18 @@
+//here the frontend is hooked with the back end-firebase
+
 import firebase from "firebase/app";
+//importing the firebase library that we need "firestore"
 import "firebase/firestore"
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCrIA0j8e7ysvSEuNbIOi5ezu1mWcF427w",
-    authDomain: "vuejs-b516c.firebaseapp.com",
-    projectId: "vuejs-b516c",
-    storageBucket: "vuejs-b516c.appspot.com",
-    messagingSenderId: "746458932697",
-    appId: "1:746458932697:web:2de0d16b8c8bc29463a5c8"
-  };
+  apiKey: "AIzaSyBSBFJK__HzZBx7BPWuWOplv7e28OhH7KU",
+  authDomain: "uniproject-vue.firebaseapp.com",
+  projectId: "uniproject-vue",
+  storageBucket: "uniproject-vue.appspot.com",
+  messagingSenderId: "367054694898",
+  appId: "1:367054694898:web:0a99e5a4d949534e6aa36b"
+};
+
 
   // Initialize Firebase
 const firebaseApp = firebase.initializeApp(firebaseConfig);
