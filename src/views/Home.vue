@@ -12,7 +12,7 @@
       <div class="container">
       <h3>View more</h3>
       <div class="blog-cards">
-      <BlogCards :post="post" v-for="(post, index) in sampleBlogCards" :key="index"/>
+      <BlogCard :post="post" v-for="(post, index) in sampleBlogCards" :key="index"/>
       </div>
       </div>
     </div>
@@ -30,10 +30,10 @@
 <script>
 import Arrow from "../assets/Icons/arrow-right-light.svg"
 import BlogPost from "../components/BlogPost";
-import BlogCards from "../components/BlogCard"
+import BlogCard from "../components/BlogCard"
 export default {
   name: "Home",
-  components: { BlogPost, BlogCards, Arrow },
+  components: { BlogPost, BlogCard, Arrow },
   data() {
     return {
       welcomeScreen: {
@@ -55,30 +55,13 @@ export default {
           blogCoverPhoto: "GreenJuice",
         },
       ],
-      sampleBlogCards: [
-        {
-          blogTitle: "Blog Card #1",
-          blogCoverPhoto: "burger",
-          blogDate: "May 1, 2022",
-        },
-        {
-          blogTitle: "Blog Card #2",
-          blogCoverPhoto: "salad",
-          blogDate: "May 1, 2022",
-        },
-        {
-          blogTitle: "Blog Card #3",
-          blogCoverPhoto: "tacos",
-          blogDate: "May 1, 2022",
-        },
-        {
-          blogTitle: "Blog Card #4",
-          blogCoverPhoto: "cake",
-          blogDate: "May 1, 2022",
-        },
-      ],
     };
   },
+  computed: {
+    sampleBlogCards(){
+      return this.$store.state.sampleBlogCards;
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
