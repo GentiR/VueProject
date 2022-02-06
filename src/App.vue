@@ -65,13 +65,62 @@ export default {
 }
 .arrow-light{
  path{
-   fill: #fff;
+   fill:black;
  }
+}
+
+button, .router-button{
+  transition: 500ms ease all;
+  cursor: pointer;
+  margin-top: 24px;
+  padding: 12px 24px;
+  background-color: rgba(53, 139, 53, 0.664);
+  color: black;
+  border-radius: 20px;
+  border: none;
+  text-transform: uppercase;
+
+  &:focus{
+    outline: none;
+  }
+  &:hover{
+    background-color: rgba(255, 166, 0, 0.767);
+  }
+}
+
+.button-ghost{
+  color: black;
+  padding: 0;
+  border-radius: 0;
+  margin-top: 50px;
+  font-size: 15px;
+  font-weight: 500;
+  background-color: transparent ;
+  @media(min-width: 700px){
+  margin-top: 0;
+  margin-left: auto;
+  }
+
+  i{
+    margin-left: 8px;
+  }
+}
+
+.button-light{
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: white;
+}
+
+.button-inactive{
+ pointer-events: none !important;
+ cursor: none !important;
+ background-color: #303030 !important;
 }
 .blog-card-wrap{
   position: relative;
   padding: 80px 16px;
-  background-color: #fff;
+  background-color: rgba(246, 236, 201, 0.308);
   @media(min-width: 500px){
    padding: 100px 16px;
   }
