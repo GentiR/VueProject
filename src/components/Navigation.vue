@@ -3,7 +3,7 @@
     <nav class="container">
       <div class="branding">
         <router-link class="header" :to="{ name: 'Home' }">
-          FireBlogs
+          Food Stories
         </router-link>
       </div>
       <div class="nav-links">
@@ -70,7 +70,7 @@ export default {
 <!--the scoped tag means that the styles we add in this component only stay within this component -->
 <style lang="scss" scoped>
 header {
-  background-color: aliceblue;
+  background-color:  rgba(53, 139, 53, 0.445);
   padding: 0 25px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -81,7 +81,7 @@ header {
     color: black;
     text-decoration: none;
     &:hover {
-      color: aquamarine;
+      color: rgba(3, 141, 33, 0.986);
     }
   }
 
@@ -91,7 +91,7 @@ header {
     transition: 0.3s color ease;
 
     &:hover {
-      color: aquamarine;
+      color:  rgb(3, 141, 33);
     }
   }
 

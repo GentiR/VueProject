@@ -4,7 +4,7 @@
       <div class="left">
         <div class="col-1">
           <router-link class="header" :to="{ name: 'home' }">
-            FireBlogs</router-link
+            Food Stories</router-link
           >
           <ul>
             <li>
@@ -66,7 +66,7 @@ export default {
  footer {
      margin-top: auto;
      padding: 100px 25px;
-     background-color: #303030;
+     background-color:rgba(53, 139, 53, 0.445);
      .container{
          display: flex;
          flex-direction: column;
@@ -93,7 +93,7 @@ export default {
              .header{
                  text-align: center;
                  font-size: 24px;
-                 color: white;
+                 color: black;
                  text-decoration: none;
                  font-weight: 600;
                   @media(min-width:800px){
@@ -130,7 +130,7 @@ export default {
                          .svg-icon{
                              width: 24px;
                              height: auto;
-                             color: white;
+                             color: black;
                          }
                      }
                  }
@@ -147,7 +147,7 @@ export default {
                  .link{
                      font-size: 16px;
                      font-weight: 500;
-                     color: white;
+                     color:black;
                      text-decoration: none;
                  }
               }   
@@ -155,7 +155,7 @@ export default {
          }
          .right{
              gap: 32px;
-             color: white;
+             color: black;
              align-items: center;
              flex-direction: column;
               @media(min-width:800px){
