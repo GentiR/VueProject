@@ -44,7 +44,7 @@ computed:{
     display: flex;
     flex-direction: column;
     border-radius: 8px;
-    background-color: rgba(248, 248, 3, 0.438);
+    background-color: rgba(245, 166, 38, 0.486);
     min-height: 420ox;
     transition: 0.5 ease all;
 
