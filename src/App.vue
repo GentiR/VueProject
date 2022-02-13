@@ -11,6 +11,8 @@
 <script>
 import Navigation from './components/Navigation';
 import Footer from "./components/Footer";
+import firebase from "firebase/app";
+import "firebase/auth";
 export default {
   name: "app",
   components: { Navigation, Footer },
@@ -20,14 +22,25 @@ export default {
     };
   },
   created() {
+    firebase.auth().onAuthStateChanged((user) => {
+      this.$store.commit("updateUser", user);
+      if (user) {
+        this.$store.dispatch("getCurrentUser", user);
+        console.log(this.$store.state.profileEmail);
+      }
+    });
     this.checkRoute();
+    this.$store.dispatch("getPost");
   },
   mounted() {},
   methods: {
     //this function is used to hide the header and footer when we are on the login, register page
     checkRoute()
     {
- if(this.$route.name === "Login" || this.$route.name === "Register" || this.$route.name === "ForgotPassword"){
+ if(this.$route.name === "Login" || 
+    this.$route.name === "Register" || 
+    this.$route.name === "ForgotPassword")
+    {
    this.navigation = true;
    return;
  }
@@ -135,6 +148,13 @@ button, .router-button{
  cursor: none !important;
  background-color: #303030 !important;
 }
+
+.error{
+  text-align: center;
+  font-size: 12px;
+  color: red;
+}
+
 .blog-card-wrap{
   position: relative;
   padding: 80px 16px;
