@@ -1,5 +1,7 @@
 <template>
-  <div class="blog-wrapper no-user">
+ <!-- if the user is logged in the purpose of this :class="{ 'no-user': !user } 
+ is to remove the welcome and register part on the home screen -->
+  <div class="blog-wrapper" :class="{ 'no-user': !user }" >
     <div class="blog-content">
       <div>
         <!-- here we display the data on screen ex. if the welcome screen exists
@@ -37,6 +39,11 @@ export default {
   props: ["post"],
   components: {
     Arrow,
+  },
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
   },
 };
 </script>

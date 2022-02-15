@@ -11,14 +11,14 @@
           <router-link class="link" :to="{name: 'Home'}"> Home </router-link>
           <router-link class="link" :to="{name: 'Blogs'}"> Blogs </router-link>
           <router-link class="link" to="#"> Create Post </router-link>
-          <router-link class="link" :to="{name: 'Login'}"> Login/Register </router-link>
+          <router-link v-if="!user" class="link" :to="{name: 'Login'}"> Login/Register </router-link>
         </ul>
         <div v-if="user" @click="toggleProfileMenu" class="profile" ref="profile">
           <!-- referencing our profile initials form our state -->
           <span>{{ this.$store.state.profileInitials }}</span>
           <div v-show="profileMenu" class="profile-menu">
             <div class="info">
-              <p class="initials">{{ this.$store.state.profileInitial }}</p>
+              <p class="initials">{{ this.$store.state.profileInitials }}</p>
               <div class="right">
                 <p>{{ this.$store.state.profileFirstName }} {{ this.$store.state.profileLastName }}</p>
                 <p>{{ this.$store.state.profileUsername }}</p>
@@ -27,13 +27,13 @@
             </div>
             <div class="options">
               <div class="option">
-                <router-link class="option" to="#">
+                <router-link class="option" :to="{name: 'Profile'}">
                   <userIcon class="icon"/>
                   <p>Profile</p>
                 </router-link>
               </div>
                <div class="option">
-                <router-link class="option" to="#">
+                <router-link class="option" :to="{name: 'Admin'}">
                   <adminIcon class="icon"/>
                   <p>Admin</p>
                 </router-link>
@@ -56,7 +56,7 @@
         <router-link class="link" :to="{name: 'Home'}"> Home </router-link>
         <router-link class="link" :to="{name: 'Blogs'}"> Blogs </router-link>
         <router-link class="link" to="#"> Create Post </router-link>
-        <router-link class="link" :to="{name: 'Login'}"> Login/Register </router-link>
+        <router-link v-if="!user" class="link" :to="{name: 'Login'}"> Login/Register </router-link>
       </ul>
     </transition>
   </header>
@@ -188,7 +188,7 @@ header {
        height: 40px;
        border-radius: 50%;
        color: white;
-       background-color:#303030 ;
+       background-color:#008558 ;
 
        span{
          pointer-events: none;
@@ -199,7 +199,7 @@ header {
          top: 60px;
          right: 0;
          width: 250px;
-         background-color: #303030;
+         background-color: #008558;
          box-shadow:  4px 6px -1px rgba(0, 0, 0, 0.1) , 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
          .info{
@@ -213,7 +213,7 @@ header {
              width: 40px;
              height: 40px;
              background-color: white;
-             color: #303030;
+             color: #008558;
              display: flex;
              align-items: center;
              justify-content: center;

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <!-- Inside of BlogPost we are goint to look for the prop post which is equal to the welcomeScreen component-->
-    <BlogPost :post="welcomeScreen" />
+    <BlogPost v-if="!user" :post="welcomeScreen" />
 
     <BlogPost
       :post="post"
@@ -16,7 +16,7 @@
       </div>
       </div>
     </div>
-    <div class="updates">
+    <div v-if="!user" class="updates">
       <div class="container">
         <h2>never miss a post.Register</h2>
         <router-link class="router-button" to="#">
@@ -60,8 +60,11 @@ export default {
   computed: {
     sampleBlogCards(){
       return this.$store.state.sampleBlogCards;
-    }
-  }
+    },
+        user(){
+      return this.$store.state.user;
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
