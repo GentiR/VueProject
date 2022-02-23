@@ -36,7 +36,6 @@ export default new Vuex.Store({
     blogPhotoName: "",
     blogPhotoFileURL: null,
     blogPhotoPreview: null,
-
     editPost: null,
     user: null,
     profileAdmin: null,
@@ -53,6 +52,15 @@ export default new Vuex.Store({
     },
     updateBlogTitle(state, payload){
       state.blogTitle = payload;
+    },
+    fileNameChange(state, payload){
+      state.blogPhotoName = payload;
+    },
+    createFileURL(state, payload){
+      state.blogPhotoFileURL= payload;
+    },
+    openPhotoPreview(state){
+      state.blogPhotoPreview = !state.blogPhotoPreview;
     },
     toggleEditPost(state, payload){
       state.editPost = payload;

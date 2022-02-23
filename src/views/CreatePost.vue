@@ -1,5 +1,6 @@
 <template>
   <div class="create-post">
+      <BlogCoverPreview v-show="this.$store.state.blogPhotoPreview"/>
       <div class="container">
           <!-- this means that the class invisible is going to be applied only
           if the error is flase -->
@@ -10,9 +11,9 @@
               <input type="text" placeholder="Enter Blog Title" v-model="blogTitle"/>
               <div class="upload-file">
                   <label for="blog-photo"> Upload Cover Photo</label>
-                  <!-- the accept means that you can only apload photos that end with either png,jpg or jpeg -->
-                  <input type="file" ref="blogPhoto" id="blog-photo" accept=".png, .jpg, .jpeg"/>
-                  <button class="preview" :class="{'button-inactive' : !this.$store.state.blogFileURL}"> Preview Photo</button>
+                  <!-- the accept means that you can only upload photos that end with either png,jpg or jpeg -->
+                  <input type="file" ref="blogPhoto" id="blog-photo" @change="fileChange" accept=".png, .jpg, .jpeg"/>
+                  <button @click="openPreview" class="preview" :class="{'button-inactive': !this.$store.state.blogPhotoFileURL}"> Preview Photo</button>
                   <span>File Chosen: {{this.$store.state.blogPhotoName}}</span>
               </div>
           </div>
@@ -28,6 +29,7 @@
 </template>
 
 <script>
+import BlogCoverPreview from "../components/BlogCoverPreview.vue"
 import Quill from "quill";
 window.Quill = Quill;
 const ImageResize = require("quill-image-resize-module").default;
@@ -36,6 +38,7 @@ export default {
 name: "CreatePost",
 data(){
     return{
+        file: null,
         error: null,
         errorMsg: null,
         editorSettings: {
@@ -44,6 +47,21 @@ data(){
             },
         },
     };
+},
+components: {
+    BlogCoverPreview,
+},
+methods:{
+    fileChange(){
+      this.file = this.$refs.blogPhoto.files[0];
+      const fileName = this.file.name;
+      this.$store.commit("fileNameChange", fileName);
+      //this generates a lockal url for us
+      this.$store.commit("createFileURL", URL.createObjectURL(this.file));
+    },
+    openPreview(){
+        this.$store.commit("openPhotoPreview");
+    },
 },
 computed: {
     profileId(){
