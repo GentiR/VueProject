@@ -30,6 +30,13 @@ export default new Vuex.Store({
         blogDate: "May 1, 2022",
       },
     ],
+    //importing values of state
+    blogHTML: "Write your blog title here...",
+    blogTitle: "",
+    blogPhotoName: "",
+    blogPhotoFileURL: null,
+    blogPhotoPreview: null,
+
     editPost: null,
     user: null,
     profileAdmin: null,
@@ -41,6 +48,12 @@ export default new Vuex.Store({
     profileInitials: null,
   },
   mutations: {
+    newBlogPost(state, payload){
+       state.blogHTML = payload;
+    },
+    updateBlogTitle(state, payload){
+      state.blogTitle = payload;
+    },
     toggleEditPost(state, payload){
       state.editPost = payload;
       console.log(state.editPost);
