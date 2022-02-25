@@ -9,6 +9,7 @@ import Profile from "../views/Profile.vue";
 import Admin from "../views/Admin.vue";
 import CreatePost from "../views/CreatePost.vue";
 import BlogPreview from "../views/BlogPreview.vue";
+import ViewBlog from "../views/ViewBlog.vue";
 
 Vue.use(VueRouter);
 //routes of our components
@@ -85,6 +86,15 @@ const routes = [
       title: 'Preview Post'
     },
   },
+  {
+    path: "/view-blog/:blogid",
+    name: "ViewBlog",
+    component: ViewBlog,
+    meta:{
+      title: 'View Blog Post'
+    },
+  },
+  
 ];
 
 const router = new VueRouter({

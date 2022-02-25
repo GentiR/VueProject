@@ -31,6 +31,8 @@ export default new Vuex.Store({
       },
     ],
     //importing values of state
+    blogPosts: [],
+    postLoaded: null,
     blogHTML: "Write your blog title here...",
     blogTitle: "",
     blogPhotoName: "",
