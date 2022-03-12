@@ -38,6 +38,7 @@ export default new Vuex.Store({
     blogPhotoName: "",
     blogPhotoFileURL: null,
     blogPhotoPreview: null,
+    //User data
     editPost: null,
     user: null,
     profileAdmin: null,
@@ -95,7 +96,7 @@ export default new Vuex.Store({
   },
   actions: {
     async getCurrentUser({ commit }) {
-      const dataBase = await db.collection("users").doc(firebase.auth().currentUser.uid);
+      const dataBase = await db.collection('users').doc(firebase.auth().currentUser.uid);
       const dbResults = await dataBase.get();
       commit("setProfileInfo", dbResults);
       commit("setProfileInitials");
@@ -117,3 +118,4 @@ export default new Vuex.Store({
   },
   modules: {}
 });
+

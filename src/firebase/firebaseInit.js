@@ -1,5 +1,4 @@
 //here the frontend is hooked with the back end-firebase
-
 import firebase from "firebase/app";
 import "firebase/firestore"
 
