@@ -16,6 +16,7 @@
         <router-link class="link" v-else :to="{ name: 'ViewBlog', params:{ blogid: this.post.blogID}}">
           view the post<Arrow class="arrow" />
         </router-link>
+        
       </div>
     </div>
     <div class="blog-photo">
