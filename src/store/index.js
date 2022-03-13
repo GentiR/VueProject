@@ -101,7 +101,7 @@ export default new Vuex.Store({
       commit("setProfileInitials");
       console.log(dbResults);
     },
-    // updating the personal information of the admin when we clicn save changes
+    // updating the personal information of the admin when we click save changes
     async updateUserSettings({commit, state}){
       const dataBase = await db.collection('users').doc(state.profileId);
       await dataBase.update({

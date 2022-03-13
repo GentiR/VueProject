@@ -6,7 +6,9 @@
           <img :src="this.currentBlog[0].blogCoverPhoto" alt=""/>
           <div class="post-content ql-editor" v-html="this.currentBlog[0].blogHTML"></div>
       </div>
+      
   </div>
+  
 
 </template>
 
