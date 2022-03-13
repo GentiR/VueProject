@@ -8,28 +8,6 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    sampleBlogCards: [
-      {
-        blogTitle: "Blog Card #1",
-        blogCoverPhoto: "burger",
-        blogDate: "May 1, 2022",
-      },
-      {
-        blogTitle: "Blog Card #2",
-        blogCoverPhoto: "salad",
-        blogDate: "May 1, 2022",
-      },
-      {
-        blogTitle: "Blog Card #3",
-        blogCoverPhoto: "tacos",
-        blogDate: "May 1, 2022",
-      },
-      {
-        blogTitle: "Blog Card #4",
-        blogCoverPhoto: "cake",
-        blogDate: "May 1, 2022",
-      },
-    ],
     blogPosts: [],
     postLoaded: null,
     blogHTML: "Write your blog title here...",
@@ -126,7 +104,6 @@ export default new Vuex.Store({
           }
         });
         state.postLoaded = true;
-        console.log(state.blogPosts);
       },
     //updating the personal information of the admin when we click save changes
     async updateUserSettings({commit, state}){

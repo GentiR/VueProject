@@ -1,9 +1,9 @@
 <template>
   <div class="app-wrapper">
-    <div class="app">
-      <Navigation v-if="!navigation"/>
+    <div class="app" v-if="this.$store.state.postLoaded">
+      <Navigation v-if="!navigation" />
       <router-view />
-      <Footer  v-if="!navigation"/>
+      <Footer v-if="!navigation" />
     </div>
   </div>
 </template>
