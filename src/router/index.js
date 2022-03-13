@@ -11,6 +11,7 @@ import CreatePost from "../views/CreatePost.vue";
 import BlogPreview from "../views/BlogPreview.vue";
 import ViewBlog from "../views/ViewBlog.vue";
 import EditBlog from "../views/EditBlog.vue";
+import Products from "../views/Products.vue";
 
 Vue.use(VueRouter);
 
@@ -29,6 +30,14 @@ const routes = [
     component: Blogs,
     meta: {
       title: "Blogs",
+    },
+  },
+  {
+    path: "/producst",
+    name: "Products",
+    component: Products ,
+    meta: {
+      title: "Products",
     },
   },
   {
