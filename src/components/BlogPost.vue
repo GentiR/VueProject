@@ -1,33 +1,26 @@
 <template>
- <!-- if the user is logged in the purpose of this :class="{ 'no-user': !user } 
+<!-- if the user is logged in the purpose of this :class="{ 'no-user': !user } 
  is to remove the welcome and register part on the home screen -->
-  <div class="blog-wrapper" :class="{ 'no-user': !user }" >
+  <div class="blog-wrapper" :class="{ 'no-user': !user }">
     <div class="blog-content">
-      <div>
-        <!-- here we display the data on screen ex. if the welcome screen exists
-         we show the title, also if blogPost exists it displays on screen-->
-        <h2 v-if="post.welcomeScreen">{{ post.title }}</h2>
-        <h2 v-else>{{ post.title }}</h2>
-        <p v-if="post.welcomeScreen">{{ post.blogPost }}</p>
-        <p class="content-preview" v-else>{{ post.blogHTML }}</p>
-        <router-link class="link " v-if="post.welcomeScreen" to="#">
-          login/register<Arrow class="arrow" />
-        </router-link>
-        <router-link class="link" v-else :to="{ name: 'ViewBlog', params:{ blogid: this.post.blogID}}">
-          view the post<Arrow class="arrow" />
-        </router-link>
-        
-      </div>
+        <div>
+            <!-- here we display the data on screen ex. if the welcome screen exists
+            we show the title, also if blogPost exists it displays on screen-->
+            <h2 v-if="post.welcomeScreen">{{ post.title }}</h2>
+            <h2 v-else>{{ post.blogTitle }}</h2>
+            <p v-if="post.welcomeScreen">{{ post.blogPost }}</p>
+            <p class="content-preview" v-else v-html="post.blogHTML"></p>
+            <router-link class="link link-light" v-if="post.welcomeScreen" to="#">
+                Login/Register<Arrow class="arrow arrow-light" />
+            </router-link>
+            <router-link class="link" v-else :to="{ name: 'ViewBlog', params: { blogid: this.post.blogID } }">
+                View The Post<Arrow class="arrow" />
+            </router-link>
+        </div>
     </div>
     <div class="blog-photo">
-      <img
-        v-if="post.welcomeScreen"
-        :src="require('../assets/blogPhotos/' + post.photo + '.jpg')"
-      />
-      <img
-        v-else
-        :src="require('../assets/blogPhotos/' + post.blogCoverPhoto + '.jpg')"
-      />
+        <img v-if="post.welcomeScreen" :src="require(`../assets/blogPhotos/${post.photo}.jpg`)" alt="" />
+        <img v-else :src="post.blogCoverPhoto" alt="" />
     </div>
   </div>
 </template>
