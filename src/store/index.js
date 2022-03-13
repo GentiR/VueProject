@@ -34,6 +34,7 @@ export default new Vuex.Store({
       return state.blogPosts.slice(2, 6);
     },
   },
+
   mutations: {
     newBlogPost(state, payload){
        state.blogHTML = payload;
@@ -54,11 +55,17 @@ export default new Vuex.Store({
       state.editPost = payload;
       console.log(state.editPost);
     },
-    updateUser(state, payload) {
-      state.user = payload;
+    setBlogState(state, payload) {
+        state.blogTitle = payload.blogTitle;
+        state.blogHTML = payload.blogHTML;
+        state.blogPhotoFileURL = payload.blogCoverPhoto;
+        state.blogPhotoName = payload.blogCoverPhotoName;
     },
     filterBlogPost(state, payload) {
         state.blogPosts = state.blogPosts.filter((post) => post.blogID !== payload);
+    },
+    updateUser(state, payload) {
+      state.user = payload;
     },
     setProfileInfo(state, doc) {
       state.profileId = doc.id;
