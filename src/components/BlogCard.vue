@@ -4,7 +4,7 @@
       <div class="icon">
         <Edit class="edit" />
       </div>
-      <div class="icon">
+      <div @click="deletePost" class="icon">
         <Delete class="delete" />
       </div>
     </div>
@@ -24,21 +24,26 @@ import Arrow from "../assets/Icons/arrow-right-light.svg"
 import Edit from "../assets/Icons/edit-regular.svg"
 import Delete from "../assets/Icons/trash-regular.svg"
 export default {
-name: "blogCard",
-props : ["post"],
-components: {
-    Arrow,
-    Edit,
-    Delete,
-},
-computed:{
-    editPost(){
-        return this.$store.state.editPost;
+    name: "blogCard",
+    props : ["post"],
+    components: {
+        Arrow,
+        Edit,
+        Delete,
+    },
+    methods:{
+        deletePost() {
+        this.$store.dispatch("deletePost", this.post.blogID);
+        },
+    },
+    computed:{
+        editPost(){
+            return this.$store.state.editPost;
+        }
     }
-}
 };
-</script>
 
+</script>
 <style lang="scss" scoped>
 .blog-card{
     position: relative;

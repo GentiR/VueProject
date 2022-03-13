@@ -57,6 +57,9 @@ export default new Vuex.Store({
     updateUser(state, payload) {
       state.user = payload;
     },
+    filterBlogPost(state, payload) {
+        state.blogPosts = state.blogPosts.filter((post) => post.blogID !== payload);
+    },
     setProfileInfo(state, doc) {
       state.profileId = doc.id;
       state.profileEmail = doc.data().email;
@@ -104,9 +107,18 @@ export default new Vuex.Store({
           }
         });
         state.postLoaded = true;
-      },
-    //updating the personal information of the admin when we click save changes
+    },
+    async updatePost({ commit, dispatch }, payload) {
+        commit("filterBlogPost", payload);
+        await dispatch("getPost");
+    },
+    async deletePost({ commit }, payload) {
+    const getPost = await db.collection("blogPosts").doc(payload);
+    await getPost.delete();
+    commit("filterBlogPost", payload);
+    },
     async updateUserSettings({commit, state}){
+    //updating the personal information of the admin when we click save changes
       const dataBase = await db.collection('users').doc(state.profileId);
       await dataBase.update({
         firstName: state.profileFirstName,

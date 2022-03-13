@@ -108,6 +108,7 @@ export default {
                         const downloadURL = await docRef.getDownloadURL();
                         const timestamp = await Date.now();
                         const dataBase = await db.collection("blogPosts").doc();
+                        
                         await dataBase.set({
                             blogID: dataBase.id,
                             blogHTML: this.blogHTML,
