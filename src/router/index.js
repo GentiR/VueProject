@@ -12,7 +12,7 @@ import BlogPreview from "../views/BlogPreview.vue";
 import ViewBlog from "../views/ViewBlog.vue";
 import EditBlog from "../views/EditBlog.vue";
 import Product from "../views/Products.vue";
-
+//import View from "../views/View.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -40,6 +40,14 @@ const routes = [
       title: "Product",
     },
   },
+  // {
+  //   path: "/view/:id",
+  //   name: "View",
+  //   component: View,
+  //   meta: {
+  //     title: "View",
+  //   },
+  // },
   {
     path: "/login",
     name: "Login",
