@@ -1,78 +1,109 @@
 <template>
-  <div class="products">
-    <div class="row">
-      <div class="col-md-3 order-md-1 mb-4">
-        <product-filter :categories="categories" :sellers="sellers" />
-      </div>
-      <div class="col-md-9 order-md-2">
-        <!-- <h4 class="mb-3">Billing address</h4> -->
-        <card-loader :loopCount="8" v-if="loading" />
-        <products-list :products_list="product_duplicate" />
+  <div class="main">
+  <section>
+    <form @submit.prevent="createProduct">
+      <h1>Add Product</h1> <br>
+    <div class="form-group">
+      <label for="typeDropdown">Type</label>
+     <Dropdown
+       id="typeDropdown"
+       v-model="form.type"
+     :options="[
+       {value: 'salad', label: 'Salad'},
+       {value: 'cake', label: 'Cake'},
+       {value: 'pica', label: 'Pica'},
+     ]"
+     />
+    </div>
+    <div>
+      <div class="form-group">
+        <label for="priceInput" >Price:</label>
+        <NumberInput id="priceInput" v-model.number="form.price"/>
       </div>
     </div>
+     <div>
+      <div class="form-group">
+        <label for="description" >Description:</label>
+        <NumberInput id="description" v-model="form.description"/>
+      </div>
+    </div>
+    <div class="form-group">
+   <button class="button" type="submit"> Publish</button>
+    </div>
+    </form>
+  </section>
   </div>
 </template>
 
 <script>
-import ProductsList from "@/components/products/ProductsList";
-import CardLoader from "@/components/shared/CardLoader";
-import axios from "axios";
-import _ from "lodash";
+
+import Dropdown from "@/components/form/Dropdown.vue";
+import NumberInput from "@/components/form/NumberInput.vue";
 
 export default {
-  name: "allProducts",
-  components: { ProductsList, CardLoader },
-  data() {
-    return {
-      categories: [],
-      sellers: [],
-      products_list: [],
-      product_duplicate: [],
-      loading: false,
-    };
+  components: {
+    Dropdown,
+    NumberInput,
   },
-  methods: {
-    getAllProducts: function() {
-      this.loading = true;
-      axios
-        .get(`${process.env.VUE_APP_BASE_URL}/products`)
-        .then((response) => {
-          this.loading = false;
-          this.products_list = response.data;
-          this.product_duplicate = response.data;
-          // getting all products and getting the unique value for
-          // productCategory and returning the productCategory property only
-          this.categories = _.uniqBy(
-            _.map(this.products_list, function(object) {
-              return _.pick(object, ["productCategory"]);
-            }),
-            "productCategory"
-          );
-          this.categories.unshift({ productCategory: "All" });
+data(){
+  return{
+   form: {
+     type: "flat",
+     description: "",
+     price: 0,
+   }
+  };
+},
+methods: {
+  async createProduct(){
+  // const result =  await apiRequests.createProduct({ ...this.form });
 
-          this.sellers = _.uniqBy(
-            _.map(this.products_list, function(object) {
-              return _.pick(object, ["productSeller"]);
-            }),
-            "productSeller"
-          );
-          this.sellers.unshift({ productSeller: "All" });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-
+  // this.$router.puth({name: "View", params: {id: result._id } });
   },
-
-  created() {
-    this.getAllProducts();
-  },
+},
 };
 </script>
 
-<style lang="css">
-.products {
-  margin-top: 40px;
+<style>
+.main{
+ display: flex;
+ justify-content: center;
+}
+form{
+margin: 50px;
+margin-top: 100px;
+width: 600px;
+height: 350px;
+background-color:rgba(245, 166, 38, 0.486);
+border-radius: 20px;
+display: flex;
+justify-content: center;
+flex-direction: column;
+}
+h1{
+  display: flex;
+  justify-content: center;
+}
+.form-group{
+margin: 15px;
+margin-left:140px ;
+}
+#typeDropdown{
+  margin-left:10px ;
+  width: 250px;
+  height: 30px;
+}
+#priceInput{
+  margin-left:6px ;
+  width: 250px;
+  height: 30px;
+}
+#description{
+  margin-left:6px ;
+  width: 204px;
+  height: 30px;
+}
+.button{
+  margin-left:110px ;
 }
 </style>
