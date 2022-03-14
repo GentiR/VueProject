@@ -11,12 +11,8 @@ import CreatePost from "../views/CreatePost.vue";
 import BlogPreview from "../views/BlogPreview.vue";
 import ViewBlog from "../views/ViewBlog.vue";
 import EditBlog from "../views/EditBlog.vue";
-<<<<<<< HEAD
 import Product from "../views/Products.vue";
 //import View from "../views/View.vue";
-=======
-
->>>>>>> parent of 1157f5b (Updating...)
 Vue.use(VueRouter);
 
 const routes = [
