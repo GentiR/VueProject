@@ -1,5 +1,6 @@
 {
   "projects": {
     "default": "vuejs-b722e"
-  }
+  },
+  "targets": {}
 }
