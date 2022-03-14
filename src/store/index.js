@@ -90,14 +90,12 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async getCurrentUser({ commit }, user) {
-        const dataBase = await db.collection("users").doc(firebase.auth().currentUser.uid);
-        const dbResults = await dataBase.get();
-        commit("setProfileInfo", dbResults);
-        commit("setProfileInitials");
-        const token = await user.getIdTokenResult();
-        const admin = await token.claims.admin;
-        commit("setProfileAdmin", admin);
+    async getCurrentUser({ commit }) {
+      const dataBase = await db.collection('users').doc(firebase.auth().currentUser.uid);
+      const dbResults = await dataBase.get();
+      commit("setProfileInfo", dbResults);
+      commit("setProfileInitials");
+      console.log(dbResults);
     },
     async getPost({ state }) {
         const dataBase = await db.collection("blogPosts").orderBy("date", "desc");
